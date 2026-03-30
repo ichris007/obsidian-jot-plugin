@@ -11,11 +11,11 @@ Jot is a quick note‑taking plugin for [Obsidian](https://obsidian.md). It help
 ## Preview
 ### Workspace Area
 
-![Preview_workspace](https://github.com/ichris007/obsidian-jot-plugin/blob/main/demo/jot_1.png)
+![Preview_workspace](https://github.com/ichris007/obsidian-jot-plugin/blob/main/demo/jot_workspace_en.png)
 
 ### Sidebar
 
-![Preview_sidebar](https://github.com/ichris007/obsidian-jot-plugin/blob/main/demo/jot_sidebar.png)
+![Preview_sidebar](https://github.com/ichris007/obsidian-jot-plugin/blob/main/demo/jot_sidebar_en.png)
 
 ## 1 ✨ Features
 
