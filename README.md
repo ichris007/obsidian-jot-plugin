@@ -17,6 +17,10 @@ Jot is a quick note‑taking plugin for [Obsidian](https://obsidian.md). It help
 
 ![Preview_sidebar](https://github.com/ichris007/obsidian-jot-plugin/blob/main/demo/jot_sidebar_en.png)
 
+### Jots.md Note
+
+![Preview_jot](https://github.com/ichris007/obsidian-jot-plugin/blob/main/demo/jot_markdown_en.png)
+
 ## 1 ✨ Features
 
 - **Quick Capture** – Open a dedicated modal with one click and start writing immediately.
@@ -27,6 +31,7 @@ Jot is a quick note‑taking plugin for [Obsidian](https://obsidian.md). It help
 - **Markdown Rendering** – Full support for Obsidian syntax: wikilinks, lists, checklists, blockquotes, embeds, and more.
 - **Multi‑language** – Built‑in Chinese and English; follows Obsidian language settings or can be switched manually.
 - **Flexible Storage** – Choose between “one file per day” or a single master file.
+- **Zero interference** – Jot creates .md files only in your chosen folder, leaves your other notes untouched. Uninstall anytime – your jots remain intact.
 - **Lightweight & Efficient** – Incremental loading and file caching for optimal performance.
 
 ## 2 📦 Installation
