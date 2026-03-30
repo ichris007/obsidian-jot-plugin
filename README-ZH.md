@@ -1,4 +1,5 @@
 # Jot
+[English](https://github.com/ichris007/obsidian-jot-plugin/blob/main/README.md) | [中文文档](https://github.com/ichris007/obsidian-jot-plugin/blob/main/README-ZH.md)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/ichris007/obsidian-jot-plugin)](https://github.com/ichris007/obsidian-jot-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
