@@ -1,7 +1,7 @@
 {
   "id": "obsidian-jot",
   "name": "Jot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "0.15.0",
   "description": "Quickly capture and organize fleeting thoughts.",
   "author": "ichris007",
