@@ -6244,8 +6244,8 @@ var JotPlugin = class extends import_obsidian5.Plugin {
     return ((_a = this.settings) == null ? void 0 : _a.language) || "zh";
   }
   async onload() {
-    console.log(t("loadingPlugin", this.lang));
     await this.loadSettings();
+    console.log(t("loadingPlugin", this.lang));
     (0, import_obsidian5.addIcon)("jot-bolt", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/><path d="M17 3h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2"/></svg>`);
     await this.ensureAttachmentsFolder();
     this.registerView(VIEW_TYPE_JOTS, (leaf) => {
@@ -6256,14 +6256,14 @@ var JotPlugin = class extends import_obsidian5.Plugin {
     });
     this.addCommand({
       id: "open-jot-view",
-      name: t("openJotView", this.lang),
+      name: `jot${this.lang === "zh" ? "\uFF1A" : ": "}${t("openJotView", this.lang)}`,
       callback: () => {
         this.activateView();
       }
     });
     this.addCommand({
       id: "quick-capture",
-      name: t("quickCapture", this.lang),
+      name: `jot${this.lang === "zh" ? "\uFF1A" : ": "}${t("quickCapture", this.lang)}`,
       callback: () => {
         new CaptureModal(this.app, this).open();
       }
@@ -6479,6 +6479,20 @@ ${content}
         leaf.view.refresh();
     });
     await this.loadJotsData();
+    this.updateCommandNames();
+  }
+  updateCommandNames() {
+    const commands = [
+      { id: "open-jot-view", key: "openJotView" },
+      { id: "quick-capture", key: "quickCapture" }
+    ];
+    const separator = this.lang === "zh" ? "\uFF1A" : ": ";
+    commands.forEach(({ id, key }) => {
+      const command = this.app.commands.findCommand(`${this.manifest.id}:${id}`);
+      if (command) {
+        command.name = `jot${separator}${t(key, this.lang)}`;
+      }
+    });
   }
 };
 /*! Bundled license information:

@@ -31,4 +31,3 @@ build/
 
 # claude
 .claude
-jot-modal-popup.png

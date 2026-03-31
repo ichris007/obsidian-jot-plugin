@@ -18,9 +18,8 @@ export default class JotPlugin extends Plugin {
     }
 
     async onload() {
-        console.log(t('loadingPlugin', this.lang));
-
         await this.loadSettings();
+        console.log(t('loadingPlugin', this.lang));
 
         addIcon("jot-bolt", `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/><path d="M17 3h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2"/></svg>`);
 
@@ -36,7 +35,7 @@ export default class JotPlugin extends Plugin {
 
         this.addCommand({
             id: "open-jot-view",
-            name: t('openJotView', this.lang),
+            name: `jot${this.lang === 'zh' ? '：' : ': '}${t('openJotView', this.lang)}`,
             callback: () => {
                 this.activateView();
             }
@@ -44,7 +43,7 @@ export default class JotPlugin extends Plugin {
 
         this.addCommand({
             id: "quick-capture",
-            name: t('quickCapture', this.lang),
+            name: `jot${this.lang === 'zh' ? '：' : ': '}${t('quickCapture', this.lang)}`,
             callback: () => {
                 new CaptureModal(this.app, this).open();
             }
@@ -281,5 +280,22 @@ export default class JotPlugin extends Plugin {
             if (leaf.view instanceof JotView) leaf.view.refresh();
         });
         await this.loadJotsData();
+        this.updateCommandNames();
+    }
+
+    private updateCommandNames() {
+        const commands = [
+            { id: "open-jot-view", key: "openJotView" as keyof Translations },
+            { id: "quick-capture", key: "quickCapture" as keyof Translations }
+        ];
+
+        const separator = this.lang === 'zh' ? '：' : ': ';
+
+        commands.forEach(({ id, key }) => {
+            const command = this.app.commands.findCommand(`${this.manifest.id}:${id}`);
+            if (command) {
+                command.name = `jot${separator}${t(key, this.lang)}`;
+            }
+        });
     }
 }
