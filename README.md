@@ -151,7 +151,12 @@ Issues and pull requests are welcome! Before submitting a PR, please ensure:
 - New features are documented.
 - Tests pass.
 
-## 10 📄 License
+## 10 🙏 Acknowledgements
+
+- This plugin was inspired by [Andrej Karpathy](https://github.com/karpathy) “[The append‑and‑review note](https://karpathy.bearblog.dev/the-append-and-review-note/)” method. Many thanks for the inspiration.
+- The UI design was inspired by the open‑source note‑taking tool [Memos](https://github.com/usememos/memos). My thanks as well.
+
+## 11 📄 License
 
 This project is released under the [MIT License](LICENSE).
 
