@@ -40,6 +40,16 @@ export class JotSettingTab extends PluginSettingTab {
                 }));
 
         new Setting(containerEl)
+            .setName(t('autoOpenView', this.plugin.lang))
+            .setDesc(t('autoOpenViewDesc', this.plugin.lang))
+            .addToggle(toggle => toggle
+                .setValue(this.plugin.settings.autoOpenView)
+                .onChange(async (value) => {
+                    this.plugin.settings.autoOpenView = value;
+                    await this.plugin.saveSettings();
+                }));
+
+        new Setting(containerEl)
             .setName(t('saveFolder', this.plugin.lang))
             .setDesc(t('saveFolderDesc', this.plugin.lang))
             .addText(text => text

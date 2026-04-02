@@ -4047,7 +4047,9 @@ var init_i18n = __esm({
         creatingNewView: "\u521B\u5EFA\u65B0\u89C6\u56FE",
         weekdays: ["\u65E5", "\u4E00", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D"],
         selectedFiles: "\u2705 \u5DF2\u9009\u62E9 {count} \u4E2A\u6587\u4EF6",
-        recordsCount: "{count}\u6761\u8BB0\u5F55"
+        recordsCount: "{count}\u6761\u8BB0\u5F55",
+        autoOpenView: "\u6253\u5F00 vault \u65F6\u81EA\u52A8\u6253\u5F00\u968F\u624B\u8BB0\u89C6\u56FE",
+        autoOpenViewDesc: "\u542F\u52A8 Obsidian \u65F6\u81EA\u52A8\u6253\u5F00\u968F\u624B\u8BB0\u89C6\u56FE"
       },
       en: {
         pluginName: "Jot",
@@ -4122,7 +4124,9 @@ var init_i18n = __esm({
         creatingNewView: "Creating new view",
         weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
         selectedFiles: "\u2705 Selected {count} file(s)",
-        recordsCount: "{count} record(s)"
+        recordsCount: "{count} record(s)",
+        autoOpenView: "Auto-open Jot View on vault open",
+        autoOpenViewDesc: "Automatically open Jot View when Obsidian starts"
       }
     };
   }
@@ -6101,7 +6105,8 @@ var DEFAULT_SETTINGS = {
   enableTagsInFrontmatter: true,
   multiFileFormat: "jot-YYYYMMDD",
   attachmentsFolder: "Jots/attachments",
-  language: "zh"
+  language: "zh",
+  autoOpenView: true
 };
 
 // src/settings.ts
@@ -6129,6 +6134,10 @@ var JotSettingTab = class extends import_obsidian4.PluginSettingTab {
       this.plugin.settings.language = value;
       await this.plugin.saveSettings();
       this.display();
+    }));
+    new import_obsidian4.Setting(containerEl).setName(t("autoOpenView", this.plugin.lang)).setDesc(t("autoOpenViewDesc", this.plugin.lang)).addToggle((toggle) => toggle.setValue(this.plugin.settings.autoOpenView).onChange(async (value) => {
+      this.plugin.settings.autoOpenView = value;
+      await this.plugin.saveSettings();
     }));
     new import_obsidian4.Setting(containerEl).setName(t("saveFolder", this.plugin.lang)).setDesc(t("saveFolderDesc", this.plugin.lang)).addText((text) => text.setPlaceholder("Jots").setValue(this.plugin.settings.saveFolder).onChange(async (value) => {
       this.plugin.settings.saveFolder = value.trim() || "Jots";
@@ -6284,7 +6293,9 @@ var JotPlugin = class extends import_obsidian5.Plugin {
     );
     this.isLoaded = true;
     this.app.workspace.onLayoutReady(async () => {
-      await this.activateView();
+      if (this.settings.autoOpenView) {
+        await this.activateView();
+      }
       await this.loadJotsData();
     });
   }

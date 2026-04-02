@@ -75,6 +75,8 @@ export interface Translations {
     weekdays: string[];
     selectedFiles: string;
     recordsCount: string;
+    autoOpenView: string;
+    autoOpenViewDesc: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -152,6 +154,8 @@ export const translations: Record<Language, Translations> = {
         weekdays: ["日", "一", "二", "三", "四", "五", "六"],
         selectedFiles: "✅ 已选择 {count} 个文件",
         recordsCount: "{count}条记录",
+        autoOpenView: "打开 vault 时自动打开随手记视图",
+        autoOpenViewDesc: "启动 Obsidian 时自动打开随手记视图",
     },
     en: {
         pluginName: "Jot",
@@ -227,6 +231,8 @@ export const translations: Record<Language, Translations> = {
         weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
         selectedFiles: "✅ Selected {count} file(s)",
         recordsCount: "{count} record(s)",
+        autoOpenView: "Auto-open Jot View on vault open",
+        autoOpenViewDesc: "Automatically open Jot View when Obsidian starts",
     }
 };
 

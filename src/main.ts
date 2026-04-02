@@ -68,9 +68,11 @@ export default class JotPlugin extends Plugin {
         );
 
         this.isLoaded = true;
-        
+
         this.app.workspace.onLayoutReady(async () => {
-            await this.activateView();
+            if (this.settings.autoOpenView) {
+                await this.activateView();
+            }
             await this.loadJotsData();
         });
     }

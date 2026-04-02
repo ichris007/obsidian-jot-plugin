@@ -10,6 +10,7 @@ export interface JotSettings {
     multiFileFormat: string;
     attachmentsFolder: string;
     language: Language;
+    autoOpenView: boolean;
 }
 
 export interface Jot {
@@ -38,7 +39,8 @@ export const DEFAULT_SETTINGS: JotSettings = {
     enableTagsInFrontmatter: true,
     multiFileFormat: "jot-YYYYMMDD",
     attachmentsFolder: "Jots/attachments",
-    language: "zh"
+    language: "zh",
+    autoOpenView: true
 };
 
 export const VIEW_TYPE_JOTS = "jot-view";
